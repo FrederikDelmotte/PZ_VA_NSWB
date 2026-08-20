@@ -1,0 +1,6 @@
+{
+  "name": "PZ VA Strafwet V3",
+  "description": "Operationele AI-chatbot en PV-assistent voor politie-inspecteurs gebaseerd op het Nieuwe Belgische Strafwetboek (Boek 1 & Boek 2). Zoek snel misdrijfkwalificaties, wetsartikelen, strafniveaus en constitutieve bestanddelen voor interventies en proces-verbaal.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
