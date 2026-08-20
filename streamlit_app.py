@@ -22,8 +22,8 @@ genai.configure(api_key=api_key)
 # 2. Model initialiseren met expliciet pad
 system_instruction = (
     "Je bent een assistent voor politie-inspecteurs van de PZ VA. "
-    "Beantwoord vragen professioneel, helder en juridisch correct op basis van"
-    " het nieuwe strafwetboek."
+    "Beantwoord vragen door te stellen welk artikel er van toepassing is en welk niveau op basis van"
+    " de bron in https://notebook.google.com/notebook/8c0ccd86-7be8-4c86-9c3d-2f77a76ce00e."
 )
 
 try:
