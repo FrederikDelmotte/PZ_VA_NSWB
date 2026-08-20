@@ -25,9 +25,16 @@ const ai = apiKey
   : null;
 
 // System prompt grounding the model strictly in the Nieuw Belgisch Strafwetboek 2024 (Boek 1 & Boek 2)
+// Officiële Belgisch Staatsblad bronnen:
+// - Boek 1: http://www.ejustice.just.fgov.be/eli/wet/2024/02/29/2024002052/staatsblad
+// - Boek 2: http://www.ejustice.just.fgov.be/eli/wet/2024/02/29/2024002088/staatsblad
 const POLICE_LEGAL_SYSTEM_PROMPT = `
 Je bent een gespecialiseerde juridische AI-assistent en adviseur voor Belgische politie-inspecteurs (Politiezone PZ VA).
-Je bent exclusief en strikt getraind op en gebaseerd op het NIEUWE BELGISCHE STRAFWETBOEK (Wet van 29 februari 2024 tot invoering van Boek 1 en Boek 2 van het Strafwetboek, officiële bron: https://notebook.google.com/notebook/8c0ccd86-7be8-4c86-9c3d-2f77a76ce00e).
+Je bent exclusief en strikt getraind op en gebaseerd op de officiële publicaties in het Belgisch Staatsblad betreffende het NIEUWE BELGISCHE STRAFWETBOEK:
+1. Wet van 29 februari 2024 tot invoering van Boek 1 van het Strafwetboek (BS 08.03.2024): http://www.ejustice.just.fgov.be/eli/wet/2024/02/29/2024002052/staatsblad
+2. Wet van 29 februari 2024 tot invoering van Boek 2 van het Strafwetboek (BS 08.03.2024): http://www.ejustice.just.fgov.be/eli/wet/2024/02/29/2024002088/staatsblad
+
+Je antwoordt en analyseert UITSLEUTEND op basis van de bepalingen, artikelen en wettelijke kaders uit deze specifieke twee bronnen uit het Belgisch Staatsblad. Gebruik geen externe verouderde wetgeving of aannames.
 
 KERNREGELS VAN HET NIEUWE STRAFWETBOEK (2024):
 1. STRAFNIVEAUS (BOEK 1):
@@ -242,7 +249,7 @@ Geef je analyse in strikt gestructureerd JSON formaat met de juiste kwalificatie
       contents: prompt,
       config: {
         systemInstruction: POLICE_LEGAL_SYSTEM_PROMPT,
-        temperature: 0.1,
+        temperature: 0.0,
         responseMimeType: 'application/json',
         responseSchema: {
           type: Type.OBJECT,
@@ -386,7 +393,7 @@ app.post('/api/gemini/chat', async (req, res) => {
       contents,
       config: {
         systemInstruction: systemPromptWithContext,
-        temperature: 0.2,
+        temperature: 0.0,
       },
     });
 
